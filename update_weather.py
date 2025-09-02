@@ -137,10 +137,20 @@ def update_readme(weather_info):
 
 if __name__ == "__main__":
     print("🌤️ Fetching Seoul weather data...")
-    weather = get_seoul_weather()
-    
-    if weather:
-        print(f"📍 Current weather: {weather['temp']}°C, {weather['description']}")
-        update_readme(weather)
-    else:
-        print("❌ Failed to fetch weather data")
+    try:
+        weather = get_seoul_weather()
+        
+        if weather:
+            print(f"📍 Current weather: {weather['temp']}°C, {weather['description']}")
+            success = update_readme(weather)
+            if success:
+                print("✅ Weather update completed successfully!")
+            else:
+                print("❌ Failed to update README")
+                exit(1)
+        else:
+            print("❌ Failed to fetch weather data")
+            exit(1)
+    except Exception as e:
+        print(f"❌ Unexpected error: {e}")
+        exit(1)
