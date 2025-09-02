@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-import os
 import requests
-import json
 from datetime import datetime
 import pytz
 
@@ -38,16 +36,30 @@ def get_weather_description(weather_code):
 
 def get_seoul_weather():
     """Fetch current weather for Seoul using free Open-Meteo API"""
-    # Seoul coordinates
-    lat, lon = 37.5665, 126.9780
+    print("🌤️ Fetching weather data from Open-Meteo API...")
     
     try:
+        # Seoul coordinates
+        lat, lon = 37.5665, 126.9780
+        
         # Open-Meteo API - completely free, no API key required
         url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current_weather=true&timezone=Asia%2FSeoul"
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
+        print(f"📡 API URL: {url}")
         
+        response = requests.get(url, timeout=30)
+        print(f"📊 Response status: {response.status_code}")
+        
+        if response.status_code != 200:
+            print(f"❌ API returned status {response.status_code}")
+            return None
+            
         data = response.json()
+        print(f"📋 API Response: {data}")
+        
+        if 'current_weather' not in data:
+            print("❌ No current_weather data in API response")
+            return None
+            
         current = data['current_weather']
         
         # Get Seoul timezone
@@ -55,36 +67,38 @@ def get_seoul_weather():
         current_time = datetime.now(seoul_tz)
         
         # Convert weather code to description and emoji
-        weather_code = current['weathercode']
+        weather_code = current.get('weathercode', 0)
         description, emoji = get_weather_description(weather_code)
         
         weather_info = {
-            'temp': round(current['temperature']),
-            'feels_like': round(current['temperature']),  # Open-Meteo doesn't provide feels_like
-            'humidity': 0,  # Not available in current_weather endpoint
+            'temp': round(current.get('temperature', 0)),
+            'feels_like': round(current.get('temperature', 0)),
             'description': description,
             'weather_id': weather_code,
-            'wind_speed': round(current['windspeed'], 1),
+            'wind_speed': round(current.get('windspeed', 0), 1),
             'updated': current_time.strftime('%Y-%m-%d %H:%M KST')
         }
         
+        print(f"✅ Weather data parsed successfully: {weather_info}")
         return weather_info
         
-    except requests.exceptions.RequestException as e:
-        print(f"❌ Error fetching weather data: {e}")
-        return None
-    except (KeyError, IndexError) as e:
-        print(f"❌ Error parsing weather data: {e}")
+    except Exception as e:
+        print(f"❌ Error in get_seoul_weather: {e}")
+        import traceback
+        traceback.print_exc()
         return None
 
 def update_readme(weather_info):
     """Update README.md with current weather information"""
+    print("📝 Updating README.md...")
+    
     if not weather_info:
         print("❌ No weather data to update")
         return False
     
     try:
         # Read current README
+        print("📖 Reading README.md...")
         with open('README.md', 'r', encoding='utf-8') as f:
             content = f.read()
         
@@ -106,25 +120,35 @@ def update_readme(weather_info):
 ---
 """
         
+        print("🔍 Looking for weather section in README...")
+        
         # Find and replace weather section
         start_marker = "## 🌦️ Current Weather in Seoul"
         end_marker = "---"
         
         start_idx = content.find(start_marker)
+        print(f"📍 Found start marker at index: {start_idx}")
+        
         if start_idx != -1:
             # Find the end of the weather section
             end_idx = content.find(end_marker, start_idx)
+            print(f"📍 Found end marker at index: {end_idx}")
+            
             if end_idx != -1:
                 # Replace the entire weather section
                 new_content = content[:start_idx] + weather_section + content[end_idx + len(end_marker):]
+                print("✅ Replaced existing weather section")
             else:
                 # If no end marker, append after start marker
                 new_content = content[:start_idx] + weather_section + content[start_idx + len(start_marker):]
+                print("✅ Appended to existing weather section")
         else:
             # If no weather section exists, add it at the beginning
             new_content = weather_section + "\n" + content
+            print("✅ Added new weather section at beginning")
         
         # Write updated README
+        print("💾 Writing updated README.md...")
         with open('README.md', 'w', encoding='utf-8') as f:
             f.write(new_content)
         
@@ -133,6 +157,8 @@ def update_readme(weather_info):
         
     except Exception as e:
         print(f"❌ Error updating README: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 if __name__ == "__main__":
