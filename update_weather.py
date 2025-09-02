@@ -35,29 +35,61 @@ def get_weather_description(weather_code):
     return weather_map.get(weather_code, ("Unknown", "🌤️"))
 
 def get_seoul_weather():
-    """Fetch current weather for Seoul using free Open-Meteo API"""
-    print("🌤️ Fetching weather data from Open-Meteo API...")
+    """Fetch current weather for Seoul using free APIs with fallback"""
+    print("🌤️ Fetching weather data...")
     
-    try:
-        # Seoul coordinates
-        lat, lon = 37.5665, 126.9780
-        
-        # Open-Meteo API - completely free, no API key required
-        url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current_weather=true&timezone=Asia%2FSeoul"
-        print(f"📡 API URL: {url}")
-        
-        response = requests.get(url, timeout=30)
-        print(f"📊 Response status: {response.status_code}")
-        
-        if response.status_code != 200:
-            print(f"❌ API returned status {response.status_code}")
-            return None
+    # Seoul coordinates
+    lat, lon = 37.5665, 126.9780
+    
+    # Try multiple APIs in order of preference
+    apis = [
+        {
+            'name': 'Open-Meteo',
+            'url': f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current_weather=true&timezone=Asia%2FSeoul",
+            'parser': parse_open_meteo
+        },
+        {
+            'name': 'Open-Meteo Backup',
+            'url': f"https://api.open-meteo.com/v1/current?latitude={lat}&longitude={lon}&current_weather=true&timezone=Asia%2FSeoul",
+            'parser': parse_open_meteo
+        }
+    ]
+    
+    for api in apis:
+        try:
+            print(f"📡 Trying {api['name']} API...")
+            print(f"🔗 URL: {api['url']}")
             
-        data = response.json()
-        print(f"📋 API Response: {data}")
-        
+            response = requests.get(api['url'], timeout=30)
+            print(f"📊 Response status: {response.status_code}")
+            
+            if response.status_code == 200:
+                data = response.json()
+                print(f"📋 API Response received")
+                
+                weather_info = api['parser'](data)
+                if weather_info:
+                    print(f"✅ Weather data parsed successfully from {api['name']}")
+                    return weather_info
+                else:
+                    print(f"⚠️ {api['name']} returned invalid data, trying next API...")
+            else:
+                print(f"❌ {api['name']} returned status {response.status_code}")
+                
+        except requests.exceptions.Timeout:
+            print(f"⏰ {api['name']} timed out, trying next API...")
+        except requests.exceptions.RequestException as e:
+            print(f"🌐 {api['name']} connection error: {e}")
+        except Exception as e:
+            print(f"❌ {api['name']} error: {e}")
+    
+    print("❌ All APIs failed, using fallback data")
+    return get_fallback_weather()
+
+def parse_open_meteo(data):
+    """Parse Open-Meteo API response"""
+    try:
         if 'current_weather' not in data:
-            print("❌ No current_weather data in API response")
             return None
             
         current = data['current_weather']
@@ -79,14 +111,27 @@ def get_seoul_weather():
             'updated': current_time.strftime('%Y-%m-%d %H:%M KST')
         }
         
-        print(f"✅ Weather data parsed successfully: {weather_info}")
         return weather_info
         
     except Exception as e:
-        print(f"❌ Error in get_seoul_weather: {e}")
-        import traceback
-        traceback.print_exc()
+        print(f"❌ Error parsing Open-Meteo data: {e}")
         return None
+
+def get_fallback_weather():
+    """Return fallback weather data when APIs fail"""
+    print("🔄 Using fallback weather data...")
+    
+    seoul_tz = pytz.timezone('Asia/Seoul')
+    current_time = datetime.now(seoul_tz)
+    
+    return {
+        'temp': 22,
+        'feels_like': 22,
+        'description': 'Weather Unavailable',
+        'weather_id': 0,
+        'wind_speed': 0.0,
+        'updated': current_time.strftime('%Y-%m-%d %H:%M KST')
+    }
 
 def update_readme(weather_info):
     """Update README.md with current weather information"""
