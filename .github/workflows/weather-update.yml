@@ -5,6 +5,9 @@ on:
     - cron: '0 * * * *'  # Every hour at minute 0
   workflow_dispatch:  # Allow manual trigger
 
+permissions:
+  contents: write  # Allow writing to repository
+
 jobs:
   update-weather:
     runs-on: ubuntu-latest
@@ -14,6 +17,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
     
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -34,5 +38,9 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add README.md
-        git diff --staged --quiet || git commit -m "🌤️ Update Seoul weather - $(date '+%Y-%m-%d %H:%M KST')"
-        git push
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "🌤️ Update Seoul weather - $(date '+%Y-%m-%d %H:%M KST')"
+          git push origin main
+        fi
