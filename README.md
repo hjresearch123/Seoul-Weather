@@ -19,6 +19,14 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **28°C** | ⛅ Partly Cloudy | 2.3 m/s | 28°C |
+
+**Last updated:** 2025-09-03 19:17 KST
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **29°C** | ⛅ Partly Cloudy | 1.6 m/s | 29°C |
 
 **Last updated:** 2025-09-03 18:17 KST
