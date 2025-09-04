@@ -19,6 +19,14 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **23°C** | 🌧️ Slight Rain | 6.3 m/s | 23°C |
+
+**Last updated:** 2025-09-04 11:54 KST
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **22°C** | 🌧️ Moderate Rain | 5.6 m/s | 22°C |
 
 **Last updated:** 2025-09-04 10:15 KST
