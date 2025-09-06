@@ -19,6 +19,14 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **29°C** | 🌦️ Light Drizzle | 8.6 m/s | 29°C |
+
+**Last updated:** 2025-09-06 11:52 KST
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **27°C** | 🌤️ Mainly Clear | 8.0 m/s | 27°C |
 
 **Last updated:** 2025-09-06 10:15 KST
