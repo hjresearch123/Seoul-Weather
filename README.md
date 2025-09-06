@@ -19,6 +19,14 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **28°C** | 🌧️ Moderate Rain | 9.2 m/s | 28°C |
+
+**Last updated:** 2025-09-06 13:19 KST
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **29°C** | 🌦️ Light Drizzle | 8.7 m/s | 29°C |
 
 **Last updated:** 2025-09-06 12:25 KST
