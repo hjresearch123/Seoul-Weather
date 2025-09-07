@@ -19,6 +19,14 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **22°C** | 🌤️ Mainly Clear | 2.9 m/s | 22°C |
+
+**Last updated:** 2025-09-07 21:31 KST
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **24°C** | ⛅ Partly Cloudy | 3.7 m/s | 24°C |
 
 **Last updated:** 2025-09-07 20:12 KST
