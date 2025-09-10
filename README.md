@@ -19,6 +19,14 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **29°C** | ☀️ Clear Sky | 1.9 m/s | 29°C |
+
+**Last updated:** 2025-09-10 18:17 KST
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **30°C** | ☀️ Clear Sky | 1.3 m/s | 30°C |
 
 **Last updated:** 2025-09-10 17:22 KST
