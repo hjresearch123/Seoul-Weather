@@ -158,8 +158,6 @@ def update_readme(weather_info):
 |:---:|:---:|:---:|:---:|
 | **{weather_info['temp']}°C** | {emoji} {description} | {weather_info['wind_speed']} m/s | {weather_info['feels_like']}°C |
 
-**Last updated:** {weather_info['updated']}
-
 </div>
 
 ---
