@@ -17,6 +17,12 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **20°C** | 🌦️ Light Drizzle | 7.1 m/s | 20°C |
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **21°C** | ⛅ Partly Cloudy | 7.6 m/s | 21°C |
 
 </div>
