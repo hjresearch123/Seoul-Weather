@@ -17,6 +17,12 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **19°C** | 🌤️ Mainly Clear | 2.2 m/s | 19°C |
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **17°C** | ⛅ Partly Cloudy | 2.5 m/s | 17°C |
 
 </div>
