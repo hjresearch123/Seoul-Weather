@@ -17,6 +17,12 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **7°C** | 🌧️ Moderate Rain | 7.9 m/s | 7°C |
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **6°C** | ☁️ Overcast | 7.9 m/s | 6°C |
 
 </div>
