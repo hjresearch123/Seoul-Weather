@@ -17,6 +17,12 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **5°C** | 🌦️ Light Drizzle | 10.5 m/s | 5°C |
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **5°C** | 🌦️ Moderate Drizzle | 10.8 m/s | 5°C |
 
 </div>
