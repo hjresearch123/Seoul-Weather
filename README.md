@@ -17,6 +17,12 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **13°C** | ☁️ Overcast | 2.4 m/s | 13°C |
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **14°C** | ☀️ Clear Sky | 3.2 m/s | 14°C |
 
 </div>
