@@ -17,6 +17,12 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **20°C** | 🌧️ Moderate Rain | 10.1 m/s | 20°C |
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **19°C** | 🌧️ Moderate Rain | 12.1 m/s | 19°C |
 
 </div>
