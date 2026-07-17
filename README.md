@@ -17,6 +17,12 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **24°C** | 🌧️ Heavy Rain | 12.1 m/s | 24°C |
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **22°C** | 🌧️ Heavy Rain | 10.5 m/s | 22°C |
 
 </div>
