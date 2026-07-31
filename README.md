@@ -17,6 +17,12 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **27°C** | 🌤️ Mainly Clear | 4.4 m/s | 27°C |
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **29°C** | 🌤️ Mainly Clear | 6.0 m/s | 29°C |
 
 </div>
