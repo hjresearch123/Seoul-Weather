@@ -17,6 +17,12 @@
 
 | 🌡️ Temperature | 🌤️ Weather | 💨 Wind | 🌡️ Feels Like |
 |:---:|:---:|:---:|:---:|
+| **23°C** | 🌦️ Light Drizzle | 4.0 m/s | 23°C |
+
+</div>
+
+---
+:|:---:|:---:|:---:|
 | **23°C** | 🌦️ Light Drizzle | 3.5 m/s | 23°C |
 
 </div>
